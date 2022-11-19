@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>정수 내림차순으로 배치하기</title>
+    <script>
+      function solution(n) {
+        let answer = 0;
+        let sortN = n
+          .toString()
+          .split("")
+          .sort((a, b) => {
+            return b - a;
+          })
+          .join("");
+        answer = +sortN;
+        return answer;
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>이상한 문자 만들기</title>
+    <script>
+      function solution(s) {
+        let answer = "";
+        let checkIndex = 1;
+        for (i = 0; i < s.length; i++) {
+          if (s[i] !== " " && checkIndex % 2 === 1) {
+            answer += s[i].toUpperCase();
+            checkIndex++;
+          } else if (s[i] !== " " && checkIndex % 2 === 0) {
+            answer += s[i].toLowerCase();
+            checkIndex++;
+          } else {
+            answer += " ";
+            checkIndex = 1;
+          }
+        }
+        return answer;
+      }
+      console.log(solution("try hello world"));
+    </script>
+  </head>
+  <body></body>
+</html>

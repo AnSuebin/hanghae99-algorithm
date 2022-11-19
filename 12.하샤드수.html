@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>하샤드 수</title>
+    <script>
+      function solution(x) {
+        let answer;
+        let placeSum = 0;
+        let divideNumber = x;
+        while (divideNumber !== 0) {
+          placeSum += divideNumber % 10;
+          divideNumber = Math.floor(divideNumber / 10);
+        }
+        if (x % placeSum === 0) {
+          answer = true;
+        } else {
+          answer = false;
+        }
+        return answer;
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

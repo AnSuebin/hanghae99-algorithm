@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+    <script>
+      // 어려웠던 splice 사용
+      // array.spice(1,1) 하면, array가 자체가 바뀌는 것
+      // array.splice(1,1)의 값은 array에서 빼고 싶은 값 추출
+      // 오름차순이 아닌 그냥 빼는게 포인트!!!!
+      function solution(arr) {
+        let answer;
+        let min = Number.MAX_SAFE_INTEGER;
+        if (arr.length === 1) {
+          answer = [-1];
+        } else {
+          for (i = 0; i < arr.length; i++) {
+            if (min > arr[i]) {
+              min = arr[i];
+            }
+          }
+          arr.splice(arr.indexOf(min), 1);
+          answer = arr;
+        }
+        return answer;
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

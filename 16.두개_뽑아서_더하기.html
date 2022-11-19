@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>두개 뽑아서 더하기</title>
+    <script>
+      // 중복 되지 않도록 넣을때 체크
+      function solution(numbers) {
+        let answer = [];
+        for (i = 0; i < numbers.length - 1; i++) {
+          for (k = i + 1; k < numbers.length; k++) {
+            if (!answer.includes(numbers[i] + numbers[k])) {
+              answer.push(numbers[i] + numbers[k]);
+            }
+          }
+        }
+        answer.sort((a, b) => {
+          return a - b;
+        });
+        return answer;
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

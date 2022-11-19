@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>자릿수 더하기</title>
+    <script>
+      function solution(n) {
+        let answer = 0;
+        // 자리수 구할 때 꿀!!!
+        while (n !== 0) {
+          answer += n % 10;
+          n = Math.floor(n / 10);
+        }
+        return answer;
+      }
+      console.log(solution(123));
+    </script>
+  </head>
+  <body></body>
+</html>

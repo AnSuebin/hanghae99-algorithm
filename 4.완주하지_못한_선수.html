@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>완주하지 못한 선수</title>
+    <script>
+      //filter로 하면 안되는 이유: 중복을 체크하지못함
+      //비교는 sort 후 while이 효율 베스트!
+      function solution(participant, completion) {
+        let answer = "";
+        let participantCheck = 0;
+        let completionCheck = 0;
+        participant = participant.sort();
+        completion = completion.sort();
+        while (participantCheck < participant.length) {
+          if (participant[participantCheck] === completion[completionCheck]) {
+            participantCheck++;
+            completionCheck++;
+          } else {
+            answer = participant[participantCheck];
+            break;
+          }
+        }
+        return answer;
+      }
+
+      console.log(solution(["leo", "kiki", "eden"], ["eden", "kiki"]));
+    </script>
+  </head>
+  <body></body>
+</html>

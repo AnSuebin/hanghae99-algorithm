@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>2016</title>
+    <script>
+      // 포인트는 2016년 2월은 29일까지!
+      function solution(a, b) {
+        let answer = "";
+        let dayList = ["THU", "FRI", "SAT", "SUN", "MON", "TUE", "WED"];
+        let monthList = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        let monthSum = 0;
+        if (a === 1) {
+          answer = dayList[b % 7];
+        } else {
+          for (let i = 0; i < a - 1; i++) {
+            monthSum += monthList[i];
+          }
+          answer = dayList[(monthSum + b) % 7];
+        }
+        return answer;
+      }
+      console.log(solution(2, 1));
+    </script>
+  </head>
+  <body></body>
+</html>

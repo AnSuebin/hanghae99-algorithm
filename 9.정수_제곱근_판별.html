@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>정수_제곱근_판별</title>
+    <script>
+      // 1일 때 부터이기 때문에, 1일때를 잘 체크해야함
+      function solution(n) {
+        let answer = -1;
+        for (i = 1; i <= Math.ceil(n / 2); i++) {
+          if (n / i === i && n % i === 0) {
+            answer = (i + 1) ** 2;
+            break;
+          }
+        }
+        return answer;
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

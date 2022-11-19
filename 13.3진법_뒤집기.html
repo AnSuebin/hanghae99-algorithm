@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>3진법 뒤집기</title>
+    <script>
+      function solution(n) {
+        let answer = 0;
+        let dividNumber = n;
+        let TritNumber = [];
+        let ReverseTritNumber = [];
+        let digitNumber = 1;
+
+        while (dividNumber !== 0) {
+          TritNumber.push(dividNumber % 3);
+          dividNumber = Math.floor(dividNumber / 3);
+        }
+        for (let i = 0; i < TritNumber.length; i++) {
+          answer += TritNumber[i] * 3 ** (TritNumber.length - i - 1);
+        }
+        // for (i = 0; 1 < TritNumber.length; i++) {
+        //   if (TritNumber[i] !== 0) {
+        //     answer += TritNumber[i] * 3 ** (TritNumber.length - i);
+        //   }
+        // }
+        console.log(TritNumber);
+        return answer;
+      }
+      console.log(solution(125));
+    </script>
+  </head>
+  <body></body>
+</html>
