@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>소수 만들기</title>
+    <script>
+      function solution(nums) {
+        let answer = 0;
+        let sum;
+        let count = 0;
+        // nums.length도 추가해서 undefined도 함께 구해져 문제가 있었음
+        for (i = 0; i < nums.length - 2; i++) {
+          for (j = i + 1; j < nums.length - 1; j++) {
+            for (k = j + 1; k < nums.length; k++) {
+              sum = nums[i] + nums[j] + nums[k];
+              count = 0;
+              for (x = 2; x <= Math.ceil(sum / 2); x++) {
+                if (sum % x === 0) {
+                  count++;
+                  break;
+                }
+              }
+              if (count === 0) {
+                answer++;
+              }
+            }
+          }
+        }
+        return answer;
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>모의고사</title>
+
+    <script>
+      // 너무 복잡하게 푼듯....?
+      function solution(answers) {
+        let answer = [];
+        let answers1;
+        let answer1Sum = 0;
+        let answers2;
+        let answer2Sum = 0;
+        let answers3;
+        let answer3Sum = 0;
+
+        for (i = 1; i <= answers.length; i++) {
+          answer1 = i % 5 === 0 ? 5 : i % 5;
+          if (i % 2) {
+            answer2 = 2;
+          } else {
+            switch (i % 8) {
+              case 2:
+                answer2 = 1;
+                break;
+              case 4:
+                answer2 = 3;
+                break;
+              case 6:
+                answer2 = 4;
+                break;
+              case 0:
+                answer2 = 5;
+                break;
+            }
+          }
+          switch (i % 10) {
+            case 1:
+            case 2:
+              answer3 = 3;
+              break;
+            case 3:
+            case 4:
+              answer3 = 1;
+              break;
+            case 5:
+            case 6:
+              answer3 = 2;
+              break;
+            case 7:
+            case 8:
+              answer3 = 4;
+              break;
+            case 9:
+            case 0:
+              answer3 = 5;
+              break;
+          }
+
+          if (answers[i - 1] === answer1) {
+            answer1Sum++;
+          }
+          if (answers[i - 1] === answer2) {
+            answer2Sum++;
+          }
+          if (answers[i - 1] === answer3) {
+            answer3Sum++;
+          }
+        }
+        let maxanswer = Math.max(answer1Sum, answer2Sum, answer3Sum);
+        let listAnswerSum = [answer1Sum, answer2Sum, answer3Sum];
+
+        for (j = 0; j < listAnswerSum.length; j++) {
+          if (maxanswer === listAnswerSum[j]) {
+            answer.push(j + 1);
+          }
+        }
+
+        return answer;
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

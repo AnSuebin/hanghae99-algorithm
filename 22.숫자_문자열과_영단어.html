@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>숫자 문자열과 영단어</title>
+    <script>
+      function solution(s) {
+        let answer = "";
+        let numberToString = [
+          "zero",
+          "one",
+          "two",
+          "three",
+          "four",
+          "five",
+          "six",
+          "seven",
+          "eight",
+          "nine",
+        ];
+        let index = 0;
+        while (index < s.length) {
+          if (isNaN(s[index])) {
+            for (i = 0; i < numberToString.length; i++) {
+              if (
+                s[index] === numberToString[i][0] &&
+                s[index + 1] === numberToString[i][1]
+              ) {
+                answer += i;
+                index += numberToString[i].length;
+                break;
+              }
+            }
+          } else {
+            answer += s[index++];
+          }
+        }
+        return +answer;
+      }
+      console.log(solution("23four5six7"));
+    </script>
+  </head>
+  <body></body>
+</html>

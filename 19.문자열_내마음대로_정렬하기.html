@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>문자열 내 마음대로 정렬하기</title>
+    <script>
+      function solution(strings, n) {
+        let answer = [];
+
+        // 문자열 map 형태로 정렬
+        let firstDivision = new Map();
+        for (i = 0; i < strings.length; i++) {
+          // 키 값 가진 것이 있으면
+          if (!firstDivision.has(strings[i][n])) {
+            firstDivision.set(strings[i][n], strings[i]);
+          } else {
+            // 키 값 가진 것이 없으면
+            let overlap = firstDivision.get(strings[i][n]);
+            if (typeof overlap === "string") {
+              // 한 요소만 가지고 있다면
+              firstDivision.set(strings[i][n], [
+                firstDivision.get(strings[i][n]),
+                strings[i],
+              ]);
+              // 배열로 이미 가지고 있다면
+            } else if (typeof overlap === "object") {
+              firstDivision.set(strings[i][n], [
+                ...firstDivision.get(strings[i][n]),
+                strings[i],
+              ]);
+            }
+            // 배열 가져와 정렬해주기
+            firstDivision.get(strings[i][n]).sort();
+          }
+        }
+
+        // 키값들 정렬해주기
+        let toArray = [...firstDivision].sort();
+
+        for (let i = 0; i < toArray.length; i++) {
+          // value가 하나만 있을때
+          if (typeof toArray[i][1] === "string") {
+            answer.push(toArray[i][1]);
+            // value가 배열일 때
+          } else if (Array.isArray(toArray[i][1])) {
+            for (let j = 0; j < toArray[i][1].length; j++) {
+              answer.push(toArray[i][1][j]);
+            }
+          }
+        }
+        return answer;
+      }
+
+      console.log(solution(["abce", "abcd", "cdx"], 2));
+    </script>
+  </head>
+  <body></body>
+</html>
