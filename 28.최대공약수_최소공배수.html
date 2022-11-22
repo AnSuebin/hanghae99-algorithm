@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>최대 공약수와 최소 공배수</title>
+    <script>
+      function solution(n, m) {
+        let answer = [];
+        let min = Math.min(n, m);
+        let GCD;
+        let LCM;
+
+        console.log(min);
+        for (i = min; i >= 1; i--) {
+          if (n % i === 0 && m % i === 0) {
+            GCD = i;
+            break;
+          }
+        }
+        LCM = (n / GCD) * m;
+
+        answer = [GCD, LCM];
+        return answer;
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

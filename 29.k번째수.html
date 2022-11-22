@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>K번쨰 수</title>
+    <script>
+      // 얕은 복사로 부터 벗어나자!!!!
+      function solution(array, commands) {
+        let answer = [];
+        let findArray;
+        let answerNumber;
+
+        for (i = 0; i < commands.length; i++) {
+          findArray = new Array(...array);
+          console.log(findArray);
+          findArray = findArray.splice(
+            commands[i][0] - 1,
+            commands[i][1] - commands[i][0] + 1
+          );
+
+          findArray.sort((a, b) => a - b);
+          answer.push(findArray[commands[i][2] - 1]);
+        }
+
+        return answer;
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

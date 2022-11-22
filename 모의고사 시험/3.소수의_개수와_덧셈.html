@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>3. 소수의 개수와 덧셈</title>
+    <script>
+      function solution(s) {
+        let answer = "";
+        // 받은 s숫자 값을 배열로 변경
+        let array = s.split(" ");
+        let small = [];
+        let large = [];
+
+        // 소수를 구분하기 위해서 for문 선택
+        for (let i = 0; i < array.length; i++) {
+          // 2부터 자신 전까지를 돌리며 나눠지는 값이 있다면, small배열에 push하고 break
+          for (let j = 2; j < array[i]; j++) {
+            if (array[i] % j === 0) {
+              small.push(array[i]);
+              break;
+            }
+          }
+        }
+
+        // 소수가 아닌 것은 for문을 돌려 array 배열과 small 배열 비교 및 large함수에 넣어줌
+        for (const arrayNumber of array) {
+          if (!small.includes(arrayNumber)) {
+            large.push(arrayNumber);
+          }
+        }
+
+        // 큰 값을 구하기 위해 내림 차순 정렬
+        large.sort((a, b) => {
+          return b - a;
+        });
+
+        // 작은 값을 구학기 위해 올림 차순 정렬
+        small.sort((a, b) => {
+          return a - b;
+        });
+
+        // answer에 배열로 값 지정
+        answer = [small[0], large[0]];
+        return answer;
+      }
+
+      let s = "15 3 10 9 7 8";
+      console.log(solution(s));
+    </script>
+  </head>
+  <body></body>
+</html>

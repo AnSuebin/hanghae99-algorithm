@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>소수 찾기</title>
+    <script>
+      // 소수를 작은 수부터 배수로 지워나가는 형식(범준쓰)
+      function solution(n) {
+        let answer = 0;
+        // n+1까지 길이의 array 생성
+        let list = new Array(n + 1);
+        // value 모두 true로 변환
+        list.fill(true, 0, n + 1);
+        // 0과 1 false로 바꿔주기
+        list[0] = false;
+        list[1] = false;
+
+        // 2부터 n까지 돌려주는데
+        for (i = 2; i <= n; i++) {
+          // 만약 List[i]가 true면, 그의 배수들을 모두 false 처리
+          if (list[i]) {
+            // 주의 i 당사자 제외 i+i부터 n까지
+            for (j = i + i; j <= n; j += i) {
+              list[j] = false;
+            }
+            //i의 제곱보다 n이 작다면 i를 더이상 돌릴 필요 없음 break
+            if (i * i >= n) {
+              break;
+            }
+          }
+        }
+
+        // true값만 찾아주기
+        list = list.filter((number) => number === true);
+        answer = list.length;
+        return answer;
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

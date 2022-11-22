@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>시저 암호</title>
+    <script>
+      // 알파벳의 길이와, s의 길이 혼동 주의
+      function solution(s, n) {
+        let answer = "";
+        let alphabetIndex;
+        let alphabets = [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f",
+          "g",
+          "h",
+          "i",
+          "j",
+          "k",
+          "l",
+          "m",
+          "n",
+          "o",
+          "p",
+          "q",
+          "r",
+          "s",
+          "t",
+          "u",
+          "v",
+          "w",
+          "x",
+          "y",
+          "z",
+        ];
+        let sLength = s.length;
+        for (i = 0; i < sLength; i++) {
+          alphabetIndex = alphabets.indexOf(s[i].toLowerCase());
+
+          if (s[i] === " ") {
+            answer += " ";
+          } else if (alphabets.length < n + alphabetIndex + 1) {
+            if (s[i].toUpperCase() === s[i]) {
+              answer +=
+                alphabets[alphabetIndex + n - alphabets.length].toUpperCase();
+            } else {
+              answer += alphabets[alphabetIndex + n - alphabets.length];
+            }
+          } else {
+            if (s[i].toUpperCase() === s[i]) {
+              answer += alphabets[alphabetIndex + n].toUpperCase();
+            } else {
+              answer += alphabets[alphabetIndex + n];
+            }
+          }
+        }
+        return answer;
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
