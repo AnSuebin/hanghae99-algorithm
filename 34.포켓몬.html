@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>포켓몬</title>
+    <script>
+      function solution(nums) {
+        let answer = 0;
+        let pickNum = nums.length / 2;
+        let poketmonMap = new Map();
+        let poketmonArray;
+
+        // 포켓몬 번호에 따른 분류
+        for (let i = 0; i < nums.length; i++) {
+          if (poketmonMap.has(nums[i])) {
+            poketmonMap.set(nums[i], poketmonMap.get(nums[i]) + 1);
+          } else {
+            poketmonMap.set(nums[i], 1);
+          }
+        }
+
+        //map 길이는 map.size
+        answer = pickNum <= poketmonMap.size ? pickNum : poketmonMap.size;
+
+        return answer;
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

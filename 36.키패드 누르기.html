@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>키패드 누르기</title>
+    <script>
+      function solution(numbers, hand) {
+        let answer = [];
+        for (let i = 0; i < numbers.length; i++) {
+          if (numbers[i] === 0) {
+            numbers[i] = 11;
+          }
+          if (numbers[i] === 1 || numbers[i] === 4 || numbers[i] === 7) {
+            answer.push("L");
+          } else if (numbers[i] === 3 || numbers[i] === 6 || numbers[i] === 9) {
+            answer.push("R");
+          } else {
+            // L과 R의 현재 위치
+            let lastIndexL = answer.lastIndexOf("L");
+            let lastIndexR = answer.lastIndexOf("R");
+            console.log(lastIndexL, lastIndexR);
+
+            let LPosition =
+              numbers[answer.lastIndexOf("L")] === numbers[-1]
+                ? 10
+                : numbers[answer.lastIndexOf("L")];
+            let RPosition =
+              numbers[answer.lastIndexOf("R")] === numbers[-1]
+                ? 12
+                : numbers[answer.lastIndexOf("R")];
+            console.log(numbers[i], LPosition, RPosition);
+
+            // L과 R의 줄을 통해 위치 비교
+            let LLine = Math.floor((LPosition - 0.5) / 3);
+            let RLine = Math.floor((RPosition - 0.5) / 3);
+            let nowLine = Math.floor((numbers[i] - 0.5) / 3);
+
+            let LRow = Math.floor(LPosition % 3 === 0 ? 3 : LPosition % 3);
+            let RRow = Math.floor(RPosition % 3 === 0 ? 3 : RPosition % 3);
+            let nowRow = Math.floor(numbers[i] % 3 === 0 ? 3 : numbers[i] % 3);
+
+            if (
+              Math.abs(nowLine - LLine) + Math.abs(nowRow - LRow) ===
+              Math.abs(nowLine - RLine) + Math.abs(nowRow - RRow)
+            ) {
+              answer.push(hand === "right" ? "R" : "L");
+            } else if (
+              Math.abs(nowLine - LLine) + Math.abs(nowRow - LRow) <
+              Math.abs(nowLine - RLine) + Math.abs(nowRow - RRow)
+            ) {
+              answer.push("L");
+            } else {
+              answer.push("R");
+            }
+          }
+        }
+        answer = answer.join("");
+        return answer;
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

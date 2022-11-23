@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>실패율</title>
+    <script>
+      function solution(N, stages) {
+        let answer = [];
+        let mapping = new Map();
+        let answerMap = new Map();
+        // 스테이지를 매핑하여, 각각의 스테이지에 남아있는 수 구하기
+        for (i = 0; i < stages.length; i++) {
+          if (mapping.has(stages[i])) {
+            mapping.set(stages[i], mapping.get(stages[i]) + 1);
+          } else {
+            mapping.set(stages[i], 1);
+          }
+        }
+        // 위의 매핑한 내용을 통해, 실패율을 매핑한 매핑
+        for (let j = 1; j <= N; j++) {
+          let divideUp = mapping.has(j) ? mapping.get(j) : 0;
+          let divideDown = 0;
+          for (let k = j; k <= N + 1; k++) {
+            divideDown += mapping.has(k) ? mapping.get(k) : 0;
+          }
+          answerMap.set(j, divideUp / divideDown);
+        }
+
+        // map을 배열로 전환하여 값이 큰것부터 정렬
+        let answerlist = [...answerMap];
+        answerlist.sort((a, b) => b[1] - a[1]);
+
+        // 답에 키값 넣어주기
+        for ([a, b] of answerlist) {
+          answer.push(a);
+        }
+
+        return answer;
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
