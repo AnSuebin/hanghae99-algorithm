@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>문제3</title>
+    <script>
+      function solution(arr1) {
+        let answer = "";
+        let answerArray = new Array();
+        let check = new Array(arr1);
+
+        //기존 입력 이중 배열의 앞 뒤에 0 넣어주기
+        for (const list of check[0]) {
+          list.splice(0, 0, 0);
+          list.push(0);
+        }
+        //기존 입력 배열 앞 뒤에 0으로 이루어진 7개 배열 넣어주기
+        answerArray.push(
+          [0, 0, 0, 0, 0, 0, 0],
+          ...check[0],
+          [0, 0, 0, 0, 0, 0, 0]
+        );
+
+        dic = [
+          [0, 1],
+          [0, -1],
+          [1, 0],
+          [-1, 0],
+        ];
+
+        // 세로를 값 도는 것
+        for (let i = 1; i <= 5; i++) {
+          // 가로를 값 도는 것
+          for (let j = 1; j <= 5; j++) {
+            for (let d = 0; d < 4; d++) {
+              if (
+                answerArray[i][j] > answerArray[i + dic[d][0]][l + dic[d][1]]
+              ) {
+                answerArray[i][j] = "*";
+              }
+            }
+            // if (
+            //   answerArray[i][j] > answerArray[i][j - 1] &&
+            //   answerArray[i][j] > answerArray[i - 1][j] &&
+            //   answerArray[i][j] > answerArray[i + 1][j] &&
+            //   answerArray[i][j] > answerArray[i][j + 1]
+            // ) {
+            //   answerArray[i][j] = "*";
+            // }
+          }
+        }
+
+        // 한줄씩 값 추출해서 콘솔창에 찍기
+        for (let i = 1; i <= 5; i++) {
+          for (let j = 1; j <= 5; j++) {
+            if (j !== 1) {
+              answer += " ";
+            }
+            answer += answerArray[i][j];
+          }
+          answer += "\n";
+        }
+        console.log(answer);
+        return answer;
+      }
+
+      let arr1 = [
+        [7, 4, 6, 5, 9],
+        [6, 1, 3, 4, 5],
+        [4, 8, 5, 6, 9],
+        [1, 3, 0, 6, 4],
+        [6, 4, 8, 1, 7],
+      ];
+      solution(arr1);
+    </script>
+  </head>
+  <body></body>
+</html>

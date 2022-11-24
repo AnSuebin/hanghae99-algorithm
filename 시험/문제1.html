@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>문제1. 윷놀이</title>
+    <script>
+      function solution(arr1) {
+        let answer = "";
+        arrLength = arr1.filter((number) => number === 1).length;
+        if (arrLength === 3) {
+          answer += "도";
+        } else if (arrLength === 2) {
+          answer += "개";
+        } else if (arrLength === 1) {
+          answer += "걸";
+        } else if (arrLength === 4) {
+          answer += "모";
+        } else {
+          answer += "윳";
+        }
+        return answer;
+      }
+      let arr1 = [0, 0, 0, 0];
+      console.log(solution(arr1));
+    </script>
+  </head>
+  <body></body>
+</html>
